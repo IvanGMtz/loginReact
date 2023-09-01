@@ -1,0 +1,11 @@
+use("db_log");
+db.usuarios.insertMany([
+    {
+        nombre: "Jose Cabrejo",
+        password: "onepiece"
+    },
+    {
+        nombre: "Brian Melo",
+        password: "luffy"
+    }
+])
