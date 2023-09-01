@@ -32,7 +32,8 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
     const res = await fetch("http://127.24.43.221:5076/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+          "Content-Type": "application/json",
+          "Accept-Version":"2.2.1"
       },
       body: JSON.stringify({
         username,
