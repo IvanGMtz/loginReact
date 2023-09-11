@@ -33,7 +33,7 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
       method: "POST",
       headers: {
           "Content-Type": "application/json",
-          "Accept-Version":"2.2.1"
+          "Accept-Version":"1.0.0"
       },
       body: JSON.stringify({
         username,
@@ -44,7 +44,7 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
     if (!res.ok) {
       alert("Usuario o contraseña incorrectos!!");
     } else {
-      alert("Logueado correctamente :)");
+      alert("Logueado correctamente :)");  
     }
   };
 
@@ -71,21 +71,49 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
 
   return (
     <>
-      <div>Registrarse</div>
+      <div className="container mt-5">
+        <h1>Aplicación de Registro e Inicio de Sesión</h1>
 
-      <input id="usuarioR" placeholder="Usuario" value={registerInfo.usernameR} onChange={handleRegisterChange} />
-      <br />
-      <input id="contraseñaR" placeholder="Contraseña" value={registerInfo.passwordR} onChange={handleRegisterChange} type="password"/>
-      <br />
-      <button onClick={register}>Registrarse</button>
+        <div className="mb-3">Registrarse</div>
+        <input
+          id="usernameR"
+          className="form-control mb-2"
+          placeholder="Usuario"
+          value={registerInfo.usernameR}
+          onChange={handleRegisterChange}
+        />
+        <input
+          id="passwordR"
+          className="form-control mb-2"
+          placeholder="Contraseña"
+          value={registerInfo.passwordR}
+          onChange={handleRegisterChange}
+          type="password"
+        />
+        <button className="btn btn-primary" onClick={register}>
+          Registrarse
+        </button>
 
-      <div>Iniciar Sesión</div>
-
-      <input id="usuario" placeholder="Usuario" value={loginInfo.username} onChange={handleLoginChange}/>
-      <br />
-      <input id="contraseña" placeholder="Contraseña" value={loginInfo.password} onChange={handleLoginChange} type="password"/>
-      <br />
-      <button onClick={login}>Iniciar Sesión</button>
+        <div className="mt-4">Iniciar Sesión</div>
+        <input
+          id="username"
+          className="form-control mb-2"
+          placeholder="Usuario"
+          value={loginInfo.username}
+          onChange={handleLoginChange}
+        />
+        <input
+          id="password"
+          className="form-control mb-2"
+          placeholder="Contraseña"
+          value={loginInfo.password}
+          onChange={handleLoginChange}
+          type="password"
+        />
+        <button className="btn btn-primary" onClick={login}>
+          Iniciar Sesión
+        </button>
+      </div>
     </>
   );
 }

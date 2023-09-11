@@ -12,8 +12,7 @@ export const getUsuario = async (req, res) => {
             }
         );
         if (!user) return res.status(404).send("Datos incorrectos");
-        if (user.password != password) return res.status(404).send("Ingreso "), console.log("NO entraste");
-        console.log("Entraste");
+        if (user.password != password) return res.status(404).send("Ingreso ")
         res.status(200).send(user);
     } catch (error) {
         throw error;
