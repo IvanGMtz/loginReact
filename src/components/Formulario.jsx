@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR}) {
+const config = JSON.parse(import.meta.env.VITE_MY_SERVER);
+
+export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR }) {
+
   const [loginInfo, setLoginInfo] = useState({
     username: usuario,
     password: contraseña,
@@ -29,11 +32,11 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
   const login = async () => {
     const { username, password } = loginInfo;
 
-    const res = await fetch("http://127.24.43.221:5076/login", {
+    const res = await fetch(`http://${config.hostname}:${config.port}/login`, {
       method: "POST",
       headers: {
-          "Content-Type": "application/json",
-          "Accept-Version":"1.0.0"
+        "Content-Type": "application/json",
+        "Accept-Version": "1.0.0",
       },
       body: JSON.stringify({
         username,
@@ -51,16 +54,19 @@ export default function Formulary({ usuario, contraseña, usuarioR, contraseñaR
   const register = async () => {
     const { usernameR, passwordR } = registerInfo;
 
-    const res = await fetch("http://127.24.43.221:5076/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        usernameR,
-        passwordR,
-      }),
-    });
+    const res = await fetch(
+      `http://${config.hostname}:${config.port}/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          usernameR,
+          passwordR,
+        }),
+      }
+    );
     
     if (!res.ok) {
       alert("Error al realizar el registro!!");

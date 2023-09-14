@@ -12,8 +12,8 @@ app.use(express.json());
 
 app.use('/', appUsuario);
 
-console.log(process.env.MY_SERVER);
-const config = JSON.parse(process.env.MY_SERVER);
+console.log(process.env.VITE_MY_SERVER);
+const config = JSON.parse(process.env.VITE_MY_SERVER);
 app.listen(config, () => {
     console.log(`http://${config.hostname}:${config.port}`);
 });
